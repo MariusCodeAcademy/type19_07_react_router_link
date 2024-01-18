@@ -4,6 +4,8 @@ import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import AddPost from './pages/AddPost';
+import Footer from './components/layout/Footer';
 
 export default function App() {
   return (
@@ -12,9 +14,20 @@ export default function App() {
 
       <Routes>
         <Route path='/' element={<HomePage />} />
+        <Route path='/add-post' element={<AddPost />} />
         <Route path='/about' element={<AboutPage />} />
         <Route path='/contact' element={<ContactPage />} />
+        <Route
+          path='*'
+          element={
+            <div className='container'>
+              <h2>404</h2>
+              <p>not found</p>
+            </div>
+          }
+        />
       </Routes>
+      <Footer />
     </div>
   );
 }
