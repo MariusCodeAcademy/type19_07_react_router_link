@@ -9,3 +9,7 @@ import { BrowserRouter } from 'react-router-dom';
   <App />,
 </BrowserRouter>,
 ```
+
+## uzd
+
+![](assets/2024-01-18-12-00-51.png)

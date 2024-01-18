@@ -19,6 +19,10 @@ export default function AddPost() {
     setInputsObj({ ...inputsObj, author: reikme });
   }
 
+  // textarea handleTextareaInput
+
+  // textarea handleTagsInput
+
   const arr = [];
   arr.push(1);
 
@@ -26,6 +30,15 @@ export default function AddPost() {
     e.preventDefault();
 
     console.log('react i in control');
+    console.log('inputsObj ===', inputsObj);
+
+    // tags, should be an array
+
+    // console.log final obj
+
+    // hide form
+
+    // show card with input data
   }
 
   return (
@@ -52,6 +65,10 @@ export default function AddPost() {
             type='text'
             placeholder='Author'
           />
+        </label>
+        <label>
+          <span>Tags</span>
+          <input type='text' placeholder='Add comma separated tags' />
         </label>
         <label>
           <span>Body</span>
