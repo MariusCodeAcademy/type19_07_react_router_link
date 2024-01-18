@@ -2,7 +2,7 @@ import React from 'react';
 
 function HomePage() {
   return (
-    <div>
+    <div className='container'>
       <h1>HomePage</h1>
       <p>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde in, vel totam eum delectus
