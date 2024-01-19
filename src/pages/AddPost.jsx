@@ -9,8 +9,11 @@ export default function AddPost() {
     author: 'James Band',
     body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, placeat deserunt. Voluptas nesciunt et libero aperiam laudantium est a dolor sit odio itaque autem voluptate porro provident consequatur eum earum illo amet laborum enim iure, quae eligendi debitis incidunt. Non pariatur tempora quibusdam voluptates qui animi in illum optio rem!',
     tagsString: 'blue, green,  yellow,red,0',
-    userId: 555,
+    userId: 5,
   });
+
+  const [postErr, setPostErr] = useState('');
+  const [formSuccess, setFormSuccess] = useState(false);
 
   function handleInput(event) {
     const { value, name } = event.target;
@@ -82,18 +85,37 @@ export default function AddPost() {
       });
       console.log('resp ===', resp);
 
+      if (resp.ok === false) {
+        // klaida
+        console.log('yra klaida');
+        throw await resp.json();
+      }
+
       const postResult = await resp.json();
+      // sekme pavyko sukur
+      // setFormSuccess
+      setFormSuccess(true);
 
       console.log('postResult ===', postResult);
     } catch (error) {
       console.warn('sendToBackEnd error ===', error);
+      console.log('noriu pranesi apie klaida kuri sako: ', error.message);
+      setPostErr(error.message);
     }
+  }
+
+  if (formSuccess === true) {
+    return (
+      <div className='container'>
+        <h1>Thank for your input</h1>
+      </div>
+    );
   }
 
   return (
     <div className='container'>
       <h1>Create post</h1>
-      <h3>Klaida jei tokia yra gauta</h3>
+
       <Link to={'/'}>Back to home</Link>
 
       <form onSubmit={handleNewPostFormSubmit} className='add-post-form'>
@@ -145,6 +167,8 @@ export default function AddPost() {
         </label>
         <button type='submit'>Create post</button>
       </form>
+      <hr />
+      <h3 style={{ color: 'tomato' }}>{postErr}</h3>
     </div>
   );
 }
