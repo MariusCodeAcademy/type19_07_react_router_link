@@ -6,6 +6,7 @@ export default function AddPost() {
     title: '',
     author: 'James Band',
     body: '',
+    tagsString: 'blue, green,  yellow,red,0',
   });
 
   function handleInput(event) {
@@ -50,7 +51,17 @@ export default function AddPost() {
     console.log('inputsObj ===', inputsObj);
 
     // tags, should be an array
-
+    const finalObj = {
+      ...inputsObj,
+      tags: inputsObj.tagsString
+        .split(',')
+        .map((str) => str.trim())
+        .filter((str) => str.length),
+      // .filter((str) => str !== ''),
+      // .filter((str) => str.length > 0),
+    };
+    delete finalObj.tagsString;
+    console.log('finalObj ===', finalObj);
     // console.log final obj
 
     // hide form
@@ -92,7 +103,14 @@ export default function AddPost() {
         </label>
         <label>
           <span>Tags</span>
-          <input type='text' placeholder='Add comma separated tags' />
+          <input
+            onChange={handleInput}
+            value={inputsObj.tagsString}
+            type='text'
+            id='tagsString'
+            name='tagsString'
+            placeholder='Add comma separated tags'
+          />
         </label>
         <label>
           <span>Body</span>
