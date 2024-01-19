@@ -38,13 +38,18 @@ export default function PostsPage() {
         blanditiis molestiae pariatur nemo sunt consequuntur quo sed quasi quos iusto quas deserunt
       </p>
       <ul className='unlisted grid'>
-        <li className='card'>
-          <p>id:</p>
-          <h2>title</h2>
-          <p>body 2 lines</p>
-          <p>likes: 5</p>
-          <p>history, merican, crime</p>
-        </li>
+        {mainPostsArr.map((post) => (
+          <li className='card' key={post.id}>
+            <p>id: {post.id}</p>
+            <h2>{post.title.slice(0, 15)}...</h2>
+            <p>{post.body.slice(0, 50)}...</p>
+            <p>likes: {post.reactions}</p>
+            <p>{post.tags.join(', ')}</p>
+            <a className='btn' href='/posts/5'>
+              Read more...
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   );
