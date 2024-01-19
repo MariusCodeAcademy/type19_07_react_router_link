@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+const postUrl = 'https://dummyjson.com/posts/add';
+
 export default function AddPost() {
   const [inputsObj, setInputsObj] = useState({
-    title: '',
+    title: 'Title ours',
     author: 'James Band',
-    body: '',
+    body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, placeat deserunt. Voluptas nesciunt et libero aperiam laudantium est a dolor sit odio itaque autem voluptate porro provident consequatur eum earum illo amet laborum enim iure, quae eligendi debitis incidunt. Non pariatur tempora quibusdam voluptates qui animi in illum optio rem!',
     tagsString: 'blue, green,  yellow,red,0',
+    userId: 5,
   });
 
   function handleInput(event) {
@@ -64,9 +67,27 @@ export default function AddPost() {
     console.log('finalObj ===', finalObj);
     // console.log final obj
 
+    sendToBackEnd(finalObj);
     // hide form
 
     // show card with input data
+  }
+
+  async function sendToBackEnd(whatToSend) {
+    try {
+      const resp = await fetch(postUrl, {
+        method: 'POST',
+        headers: { 'Content-type': 'application/json' },
+        body: JSON.stringify(whatToSend),
+      });
+      console.log('resp ===', resp);
+
+      const postResult = await resp.json();
+
+      console.log('postResult ===', postResult);
+    } catch (error) {
+      console.warn('sendToBackEnd error ===', error);
+    }
   }
 
   return (
