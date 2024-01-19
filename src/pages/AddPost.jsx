@@ -5,6 +5,7 @@ export default function AddPost() {
   const [inputsObj, setInputsObj] = useState({
     title: '',
     author: 'James Band',
+    body: '',
   });
 
   function handleTitleInput(e) {
@@ -17,6 +18,12 @@ export default function AddPost() {
     const reikme = e.target.value;
     // paimam viska kas yra state ir pridedam kas pasikeite
     setInputsObj({ ...inputsObj, author: reikme });
+  }
+
+  function handleTextareaInput(e) {
+    const reikme = e.target.value;
+    // paimam viska kas yra state ir pridedam kas pasikeite
+    setInputsObj({ ...inputsObj, body: reikme });
   }
 
   // textarea handleTextareaInput
@@ -52,6 +59,9 @@ export default function AddPost() {
           <span>Title</span>
           <input
             onChange={handleTitleInput}
+            onKeyDown={(e) => {
+              console.log('e ===', e);
+            }}
             value={inputsObj.title}
             type='text'
             placeholder='Title'
@@ -72,7 +82,11 @@ export default function AddPost() {
         </label>
         <label>
           <span>Body</span>
-          <textarea cols='30' rows='10'></textarea>
+          <textarea
+            onChange={handleTextareaInput}
+            value={inputsObj.body}
+            cols='30'
+            rows='10'></textarea>
         </label>
         <button type='submit'>Create post</button>
       </form>
