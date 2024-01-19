@@ -8,8 +8,18 @@ export default function AddPost() {
     body: '',
   });
 
+  function handleInput(event) {
+    const { value, name } = event.target;
+    console.log('value, name ===', value, name);
+    setInputsObj({ ...inputsObj, [name]: value });
+  }
+
   function handleTitleInput(e) {
-    const reikme = e.target.value;
+    const reikme = e.target['value'];
+    const inputKey = 'title';
+    console.log('e.target.name ===', e.target.name);
+    console.log('e.target.id ===', e.target.id);
+
     // paimam viska kas yra state ir pridedam kas pasikeite
     setInputsObj({ ...inputsObj, title: reikme });
   }
@@ -58,22 +68,26 @@ export default function AddPost() {
         <label>
           <span>Title</span>
           <input
-            onChange={handleTitleInput}
+            onChange={handleInput}
             onKeyDown={(e) => {
               console.log('e ===', e);
             }}
             value={inputsObj.title}
             type='text'
             placeholder='Title'
+            id='title'
+            name='title'
           />
         </label>
         <label>
           <span>Author</span>
           <input
-            onChange={handleAuthorInput}
+            onChange={handleInput}
             value={inputsObj.author}
             type='text'
             placeholder='Author'
+            id='author'
+            name='author'
           />
         </label>
         <label>
@@ -83,8 +97,10 @@ export default function AddPost() {
         <label>
           <span>Body</span>
           <textarea
-            onChange={handleTextareaInput}
+            onChange={handleInput}
             value={inputsObj.body}
+            id='body'
+            name='body'
             cols='30'
             rows='10'></textarea>
         </label>
