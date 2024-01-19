@@ -8,7 +8,9 @@ export default function Header() {
       </a>
       <nav className='flex'>
         <NavLink to={'/'}>Home</NavLink>
-        <NavLink to={'/posts'}>Our posts</NavLink>
+        <NavLink end to={'/posts'}>
+          Our posts
+        </NavLink>
         <NavLink to={'/add-post'}>Create post</NavLink>
         <NavLink to={'/about'}>About</NavLink>
         <NavLink to={'/contact'}>Contact</NavLink>

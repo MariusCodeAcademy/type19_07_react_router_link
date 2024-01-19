@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const postObj = {
   id: 1,
@@ -45,9 +46,9 @@ export default function PostsPage() {
             <p>{post.body.slice(0, 50)}...</p>
             <p>likes: {post.reactions}</p>
             <p>{post.tags.join(', ')}</p>
-            <a className='btn' href='/posts/5'>
+            <Link className='btn' to={`/posts/${post.id}`}>
               Read more...
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
