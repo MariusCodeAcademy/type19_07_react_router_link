@@ -6,6 +6,7 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import AddPost from './pages/AddPost';
 import Footer from './components/layout/Footer';
+import PostsPage from './pages/PostsPage';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
 
       <Routes>
         <Route path='/' element={<HomePage />} />
+        <Route path='/posts' element={<PostsPage />} />
         <Route path='/add-post' element={<AddPost />} />
         <Route path='/about' element={<AboutPage />} />
         <Route path='/contact' element={<ContactPage />} />

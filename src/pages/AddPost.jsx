@@ -9,7 +9,7 @@ export default function AddPost() {
     author: 'James Band',
     body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, placeat deserunt. Voluptas nesciunt et libero aperiam laudantium est a dolor sit odio itaque autem voluptate porro provident consequatur eum earum illo amet laborum enim iure, quae eligendi debitis incidunt. Non pariatur tempora quibusdam voluptates qui animi in illum optio rem!',
     tagsString: 'blue, green,  yellow,red,0',
-    userId: 5,
+    userId: 555,
   });
 
   const [postErr, setPostErr] = useState('');
@@ -77,6 +77,7 @@ export default function AddPost() {
   }
 
   async function sendToBackEnd(whatToSend) {
+    // setPostErr('');
     try {
       const resp = await fetch(postUrl, {
         method: 'POST',
